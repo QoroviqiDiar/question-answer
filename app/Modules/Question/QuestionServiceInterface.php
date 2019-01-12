@@ -12,4 +12,6 @@ namespace App\Modules\Question;
 interface QuestionServiceInterface
 {
     public function getAll();
+
+    public function getLatestWithPagination($paginate);
 }

@@ -6,6 +6,8 @@ use App\Models\Question;
 use App\Modules\Question\QuestionServiceInterface;
 use function dd;
 use Illuminate\Http\Request;
+use Mockery\Exception;
+use function view;
 
 class QuestionsController extends Controller
 {
@@ -23,8 +25,13 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = $this->questionService->getAll();
-        dd($questions);
+        try {
+            $questions = $this->questionService->getLatestWithPagination(5);
+            return view('questions.index')->with(['questions' => $questions]);
+        } catch (Exception $exception) {
+
+        }
+
     }
 
     /**

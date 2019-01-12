@@ -12,4 +12,9 @@ class QuestionService implements QuestionServiceInterface
     {
         return Question::all();
     }
+
+    public function getLatestWithPagination($paginate)
+    {
+        return Question::latest()->paginate($paginate);
+    }
 }

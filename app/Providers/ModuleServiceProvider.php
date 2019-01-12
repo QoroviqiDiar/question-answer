@@ -30,6 +30,9 @@ class ModuleServiceProvider extends ServiceProvider
         $this->bindModules($this->modules);
     }
 
+    /**
+     * @param $module
+     */
     private function bindService($module)
     {
         $serviceInterfacePath = "App\\Modules\\{$module}\\{$module}ServiceInterface";
@@ -37,6 +40,9 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->singleton($serviceInterfacePath, $servicePath);
     }
 
+    /**
+     * @param $modules
+     */
     private function bindModules($modules)
     {
         foreach ($modules as $module) $this->bindService($module);
