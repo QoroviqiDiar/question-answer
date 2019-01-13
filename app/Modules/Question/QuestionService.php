@@ -17,4 +17,9 @@ class QuestionService implements QuestionServiceInterface
     {
         return Question::latest()->paginate($paginate);
     }
+
+    public function getLatestWithEagerLoadPagination($paginate, $eagerLoad)
+    {
+        return Question::with($eagerLoad)->paginate($paginate);
+    }
 }

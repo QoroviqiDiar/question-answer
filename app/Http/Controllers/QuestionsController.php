@@ -26,7 +26,7 @@ class QuestionsController extends Controller
     public function index()
     {
         try {
-            $questions = $this->questionService->getLatestWithPagination(5);
+            $questions = $this->questionService->getLatestWithEagerLoadPagination(5, 'user');
             return view('questions.index')->with(['questions' => $questions]);
         } catch (Exception $exception) {
 

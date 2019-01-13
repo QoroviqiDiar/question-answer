@@ -14,4 +14,6 @@ interface QuestionServiceInterface
     public function getAll();
 
     public function getLatestWithPagination($paginate);
+
+    public function getLatestWithEagerLoadPagination($paginate, $eagerLoad);
 }
